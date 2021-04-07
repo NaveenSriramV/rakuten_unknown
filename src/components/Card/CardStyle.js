@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export default makeStyles((theme)=>({
+export default makeStyles(()=>({
    card:{
        maxWidth: 345,
        backgroundColor:'#212121',
@@ -11,5 +11,9 @@ export default makeStyles((theme)=>({
    },
    heading:{
        color:'#e0e0e0'
+   },
+   location:{
+       color:'#f8bbd0',
+    //    justifyContent: ''
    }
 }))

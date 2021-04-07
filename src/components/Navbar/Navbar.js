@@ -5,6 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
+import {  PowerSettingsNew } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +26,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar(props) {
+function Navbar({InvestorLogin, setInvestorLogin}) {
+  const logout=()=>{
+    setInvestorLogin(false);
+    window.location='/home'
+  }
+  
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -40,16 +47,18 @@ function Navbar(props) {
             
             />
             </Link>
-            
-          <Typography variant="h6" className={classes.title}></Typography>
-          {!props.reg && (
-            <Button href='/register' className={classes.button} color="inherit">
-              Register
-            </Button>
-          )}
+            <Typography variant="h6" className={classes.title}></Typography>
+          {InvestorLogin?<Avatar/>:
           <Button href='/login' className={classes.button} color="inherit">
             Login  
           </Button>
+          }
+            
+          {InvestorLogin?<Button onClick={logout}><PowerSettingsNew/></Button>:
+            <Button href='/register' className={classes.button} color="inherit">
+              Register
+            </Button>}
+
         </Toolbar>
       </AppBar>
     </div>

@@ -8,7 +8,7 @@ import {
   CircularProgress,
   Typography,
 } from "@material-ui/core";
-import makeStyles from "./CardStyle";
+import makeStyles from "./Card/CardStyle";
 import axios from "axios";
 
 

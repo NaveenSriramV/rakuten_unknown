@@ -4,7 +4,7 @@ export default makeStyles((theme)=>({
     textField:{
         margin:'5px',
         padding:'5px',
-        backgroundColor:'#455a64',
+        backgroundColor:'white',
         borderRadius:5
  
     },
@@ -23,6 +23,7 @@ export default makeStyles((theme)=>({
         backgroundColor:'#212121',
         borderRadius:50,
         margin:30,
+        marginTop:'10%'
         
     },
     button:{
@@ -39,6 +40,15 @@ export default makeStyles((theme)=>({
         margin:'7px',
         marginLeft:'10px'
 
+    },
+    line:{
+        height: "470px",
+        position: "absolute",
+        // left: '50%',
+        // marginLeft: "-3px",
+        top: '20%',
+        padding:5,
+        margin:20,
     }
 }))
 

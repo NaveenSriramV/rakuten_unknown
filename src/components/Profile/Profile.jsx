@@ -7,28 +7,32 @@ import { CircularProgress } from '@material-ui/core';
 
 
 function Profile() {
+    
     const [Company, setCompany] = useState(null)
     const id= window.location.pathname.slice(9);
     const getCompany=async()=>{
         await axios.get(`http://localhost:8000/getStartupId/${id}`)
-            .then((res)=>{
-                setCompany(res.data)
+        .then((res)=>{
+            setCompany(res.data)
                 // console.log(res.data);
-            
+                
             })
             // .catch(console.log('unable to load data'))
-    }
-
-    useEffect(() => {
-        getCompany();
-      }, []);
-    // console.log(id);
-
-    
-    const classes=makeStyles();
-
-    if (!Company) return <CircularProgress/>
-
+        }
+        
+        useEffect(() => {
+            getCompany();
+        }, []);
+        // console.log(id);
+        
+        
+        const classes=makeStyles();
+        
+        if (!Company) return <CircularProgress/>
+        // if(InvestorLogin===false){
+        //     window.location='/login'
+        // }
+        
     return (
         <Card className={classes.card} elevation={3} >
             <CardActionArea>
