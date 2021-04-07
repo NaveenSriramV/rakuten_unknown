@@ -16,7 +16,7 @@ export default makeStyles((theme)=>({
        width:'75%',
        margin:20,
        marginLeft:35,
-       backgroundColor:'#455a64',
+       backgroundColor:'white',
         borderRadius:5
 
        

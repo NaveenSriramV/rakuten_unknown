@@ -13,11 +13,12 @@ import axios from 'axios';
 import Message from './components/Messages';
 import SimpleSlider from './components/Slider';
 import RegisterInvestor from './components/Register/RegisterInvestor';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
 
-  const [InvestorLogin, setInvestorLogin] = useState(true);
+  const [InvestorLogin, setInvestorLogin] = useState(false);
 
 
   const [startUp, setstartUp] = useState([]);
@@ -62,6 +63,7 @@ function App() {
         <Route exact path='/profile/:id' ><Profile/></Route>
         <Route exact path='/dashboard/:id' ><Dashboard details={startUp}  /></Route>
       </Grid>
+      <Footer/>
     </div>
     </Router>
   );

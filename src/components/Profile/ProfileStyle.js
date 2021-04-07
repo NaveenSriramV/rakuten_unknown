@@ -26,7 +26,8 @@ export default makeStyles((theme)=>({
  contents:{
      margin:5,
      marginLeft:15,
-     color:'#ede7f6'
+     color:'#ede7f6',
+     
  },
  button:{
      width:'100%',

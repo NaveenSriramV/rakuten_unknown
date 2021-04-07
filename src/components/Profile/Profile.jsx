@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import makeStyles from './ProfileStyle';
 import { CircularProgress } from '@material-ui/core';
-import { Web, LinkedIn, Slideshow } from '@material-ui/icons';
+import { Web, LinkedIn, Slideshow, MailOutline, PhoneAndroid } from '@material-ui/icons';
 
 
 
@@ -28,6 +28,15 @@ function Profile() {
         
         
         const classes=makeStyles();
+
+        const copy=()=>{
+            var text = Company.Contact;
+          navigator.clipboard.writeText(text).then(function() {
+            // e.preventDefault()
+            alert('Number Copied to Clipboard')
+          }, function(err) {
+          console.error('Async: Could not copy text: ', err);
+          });}
         
         if (!Company) return <CircularProgress/>
         // if(InvestorLogin===false){
@@ -57,13 +66,30 @@ function Profile() {
                     <Typography className={classes.contents} variant='body1'>{Company.Domain}</Typography>
 
                     <Typography className={classes.subheading} variant='h6'><u>Our Links :</u></Typography>
-                    <Typography className={classes.contents} variant='body1'><a href={Company.Linkedin}><LinkedIn style={{color: 'blue',height:'30px',width:'30px',margin:'10px'}}/>Linked in</a></Typography>
-                    <Typography className={classes.contents} variant='body1'><a href={Company.CompanyWebsite}><Web/>Our Website</a></Typography>
-                    <Typography className={classes.contents} variant='body1'><a href={Company.SlideLink}><Slideshow/>Slide Link</a></Typography>
+                    <Grid container direction='row'>
+                        <a href={Company.Linkedin}><LinkedIn style={{height:'30px',width:'30px',margin:'10px'}}/></a>
+                        <Typography  variant='button' style={{marginTop:'15px'}} >Linked in</Typography>
+                    </Grid>
+                    <Grid container direction='row'>
+                        <a href={Company.CompanyWebsite}><Web style={{color:'#1de9b6', height:'30px',width:'30px',margin:'10px'}}/></a>
+                        <Typography  variant='button' style={{marginTop:'15px'}} >Our Website</Typography>
+                    </Grid>
+                    <Grid container direction='row'>
+                        <a href={Company.SlideLink}><Slideshow style={{ color:'#ef6c00', height:'30px',width:'30px',margin:'10px'}}/></a>
+                        <Typography  variant='button' style={{marginTop:'15px'}} >Our Presentation</Typography>
+                    </Grid>
 
                     <Typography className={classes.subheading} variant='h6'><u>Like Our Profile Lets get in Touch:</u></Typography>
-                    <Typography className={classes.contents} variant='body1'>{Company.Contact}</Typography>
-                    <Typography className={classes.contents} variant='body1'>{Company.Email}</Typography>
+                    <Grid container direction='row'>
+                        <a href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${Company.Email}`}><MailOutline style={{ color:'#d50000', height:'30px',width:'30px',margin:'10px'}}/></a>
+                        <Typography  variant='button' style={{marginTop:'15px'}} >Email</Typography>
+                    </Grid>
+                    <Grid container direction='row'>
+                        <a href='' onClick={copy}><PhoneAndroid style={{ color:'#6200ea', height:'30px',width:'30px',margin:'10px'}}/></a>
+                        <Typography  variant='button' style={{marginTop:'15px'}} >Phone</Typography>
+                    </Grid>
+                    
+                    {/* <Typography className={classes.contents} variant='body1'>{Company.Email}</Typography> */}
 
                 </CardContent>
             
