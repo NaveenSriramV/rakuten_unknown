@@ -44,7 +44,7 @@ function Login({setInvestorLogin}) {
   const onSubmitInvestor = (e) => {
       e.preventDefault();
       // console.log(FormDetails);
-      axios.post('http://localhost:8000/login',FormDetailsInvestor)
+      axios.post('http://localhost:8000/loginInvestor',FormDetailsInvestor)
         .then((res)=>{
           setInvestorLogin(true)
           // console.log(res.data)
@@ -111,14 +111,14 @@ function Login({setInvestorLogin}) {
             Login as Investor
           </Typography>
           <TextField
-            name="Email"
+            name="Phone"
             onChange={onchangeInvestor}
             className={classes.textField}
-            label="E-mail"
+            label="Phone"
             color="secondary"
             fullWidth
             required
-            type="email"
+            type="tel"
           />
           <TextField
             name="Password"

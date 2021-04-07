@@ -17,7 +17,7 @@ import RegisterInvestor from './components/Register/RegisterInvestor';
 
 function App() {
 
-  const [InvestorLogin, setInvestorLogin] = useState(false);
+  const [InvestorLogin, setInvestorLogin] = useState(true);
 
 
   const [startUp, setstartUp] = useState([]);

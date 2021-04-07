@@ -22,7 +22,9 @@ body::-webkit-scrollbar-thumb {
   border-radius: 30px;
 }
 a{
-  color: #42a5f5
+  color: #42a5f5;
+  justify-content: center;
+  display: block;
 }
 
 

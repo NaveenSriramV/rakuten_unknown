@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import makeStyles from './ProfileStyle';
 import { CircularProgress } from '@material-ui/core';
+import { Web, LinkedIn, Slideshow } from '@material-ui/icons';
 
 
 
@@ -35,7 +36,7 @@ function Profile() {
         
     return (
         <Card className={classes.card} elevation={3} >
-            <CardActionArea>
+            
                 <CardContent>
 
                 <Avatar className={classes.avatar}>{Company.CompanyName.slice(0,1).toUpperCase()}</Avatar>
@@ -56,16 +57,16 @@ function Profile() {
                     <Typography className={classes.contents} variant='body1'>{Company.Domain}</Typography>
 
                     <Typography className={classes.subheading} variant='h6'><u>Our Links :</u></Typography>
-                    <a><Typography className={classes.contents} variant='body1'>{Company.Linkedin}</Typography></a>
-                    <a><Typography className={classes.contents} variant='body1'>{Company.CompanyWebsite}</Typography></a>
-                    <a><Typography className={classes.contents} variant='body1'>{Company.SlideLink}</Typography></a>
+                    <Typography className={classes.contents} variant='body1'><a href={Company.Linkedin}><LinkedIn style={{color: 'blue',height:'30px',width:'30px',margin:'10px'}}/>Linked in</a></Typography>
+                    <Typography className={classes.contents} variant='body1'><a href={Company.CompanyWebsite}><Web/>Our Website</a></Typography>
+                    <Typography className={classes.contents} variant='body1'><a href={Company.SlideLink}><Slideshow/>Slide Link</a></Typography>
 
                     <Typography className={classes.subheading} variant='h6'><u>Like Our Profile Lets get in Touch:</u></Typography>
                     <Typography className={classes.contents} variant='body1'>{Company.Contact}</Typography>
                     <Typography className={classes.contents} variant='body1'>{Company.Email}</Typography>
 
                 </CardContent>
-            </CardActionArea>
+            
             <CardActions>
                     <Button href={`/contact/${id}`} className={classes.button}  size='small' color='secondary' variant='contained'>
                         Send a Message
