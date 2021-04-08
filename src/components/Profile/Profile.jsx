@@ -1,4 +1,4 @@
-import { Avatar, Card, CardActionArea, CardContent, Button,CardActions,Grid, Typography } from '@material-ui/core';
+import { Avatar, Card, CardMedia, CardContent, Button,CardActions,Grid, Typography } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import makeStyles from './ProfileStyle';
@@ -47,12 +47,18 @@ function Profile() {
         <Card className={classes.card} elevation={3} >
             
                 <CardContent>
+        
+                {/* title="Paella dish" */}
+                
 
                 <Avatar className={classes.avatar}>{Company.CompanyName.slice(0,1).toUpperCase()}</Avatar>
                 <Grid container justify='center' alignItems='center' direction='column' >
                     <Typography  variant='h4'>{Company.CompanyName.toUpperCase()}</Typography>
                     <Typography variant='h6' gutterBottom>CEO: {Company.NameofCeo.toUpperCase()}</Typography>
                 </Grid>
+                    <Grid container direction='row' justify='space-around'>
+                        <img className={classes.image} src={"https://www.lopol.org/sites/default/files/public/styles/max_1300x1300/public/field/image/article/certificate-of-incorporation-company-cin-no.jpg?itok=ETOrWvVn"} alt=""/>
+                    </Grid>
                     <Typography className={classes.subheading} variant='h6'><u>Our Area Of Work :</u></Typography>
                     <Typography className={classes.contents} variant='body1'>{Company.FeildOfWork}</Typography>
 
@@ -88,8 +94,6 @@ function Profile() {
                         <a href='' onClick={copy}><PhoneAndroid style={{ color:'#6200ea', height:'30px',width:'30px',margin:'10px'}}/></a>
                         <Typography  variant='button' style={{marginTop:'15px'}} >Phone</Typography>
                     </Grid>
-                    
-                    {/* <Typography className={classes.contents} variant='body1'>{Company.Email}</Typography> */}
 
                 </CardContent>
             

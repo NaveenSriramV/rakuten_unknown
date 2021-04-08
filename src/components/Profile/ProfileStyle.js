@@ -37,7 +37,12 @@ export default makeStyles((theme)=>({
      padding:10,
      backgroundColor:'#ff1744'
 
+ },
+ image:{
+     height:'500px',
+     padding:10,
+     margin:10,
+    //  marginLeft:'50%'
  }
-
 }))
 

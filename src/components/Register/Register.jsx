@@ -7,10 +7,21 @@ import axios from 'axios';
 function Register() {
     const classes=makeStyles();
     const [FormDetails, setFormDetails] = useState({})
+    const [SelectedFile, setSelectedFile] = useState(null)
+    // const [Uploades, setUploades] = useState(false)
 
-    const onchangec=(e)=>{
-        // var name=console.log(e.target.name);
-        setFormDetails({...FormDetails,[e.target.name]:e.target.value})
+   const handleUploadClick =async event => {
+        var file = await event.target.files[0];
+        
+        setSelectedFile(file);
+        // setUploades(true);
+    
+      };
+      
+      const onchangec=(e)=>{
+          // var name=console.log(e.target.name);
+          setFormDetails({...FormDetails,[e.target.name]:e.target.value})
+          console.log(FormDetails);
         
     }
     
@@ -20,6 +31,9 @@ function Register() {
         axios.post("http://localhost:8000/addstartup",FormDetails)
             .then(window.location='/home');
 
+        axios.post("http://localhost:8000/addstartup/image",SelectedFile)
+            .then(console.log('image added'))
+            .catch(console.log('error image'))
         
     }
 
@@ -33,6 +47,8 @@ function Register() {
                 <TextField name='CompanyName' onChange={onchangec} className={classes.textField} label='Company Name'  color="secondary"  fullWidth required /> 
                 <TextField name='CompanyRegNumber' onChange={onchangec} className={classes.textField} label='Company RegNo'  color="secondary"  fullWidth required /> 
                 <TextField name='Password' onChange={onchangec} className={classes.textField} label='Password'  color="secondary" type='password' fullWidth required/> 
+                {/* <label>upload your company's registeration certificate</label><br/><br/> 
+                 <Button variant="contained" component="label">Upload Image<input type="file" accept="image/*" hidden /></Button> */}
                 <TextField name='NameofCeo' onChange={onchangec} className={classes.textField} label='Name of CEO'  color="secondary"  fullWidth required/>
                 <TextField name='FeildOfWork' onChange={onchangec} className={classes.textField} label='Field of work'  color="secondary"  fullWidth required multiline rows={3}/>
                 <TextField name='Linkedin' onChange={onchangec} className={classes.textField} label='Linkedin Link'  color="secondary"  fullWidth required/>
@@ -45,6 +61,18 @@ function Register() {
                 <TextField name='SlideLink' onChange={onchangec} className={classes.textField} label='Google Slide Link'  color="secondary"  fullWidth/>
                 <TextField name='InvestorContent' onChange={onchangec} className={classes.textField} label='Would you like to say something to your investors'  color="secondary"  fullWidth multiline rows={3}/><br/>
                 <TextField name='Domain' onChange={onchangec} className={classes.textField} label='Domain'  color="secondary"  fullWidth required/>
+
+                <Button color="secondary"  variant="contained" className={classes.button}>
+                        {/* Upload your Company's Regestration Certificate  */}
+                        <input
+                            name="image"
+                            // hidden
+                            accept="image/*"
+                            type="file"
+                            onChange={handleUploadClick}
+                            />
+                </Button>
+
                 <Button  className={classes.button} color='secondary' type='submit' variant='contained'>Submit</Button>
             </form>
 
