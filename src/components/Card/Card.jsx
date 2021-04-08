@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, CardActionArea, CardActions, CardContent, Typography } from "@material-ui/core";
 import makeStyles from './CardStyle.js'
+import Rating from '@material-ui/lab/Rating';
 import { LocationCity, LocationOn, VerifiedUser } from '@material-ui/icons';
 
 function Cards({heading, body,id,InvestorLogin,city}) {
@@ -18,7 +19,9 @@ function Cards({heading, body,id,InvestorLogin,city}) {
                     <Typography variant='body2'  component='p' >
                         {body}
                     </Typography>
+                    
                 </CardContent>
+                    <Rating name="half-rating-read" defaultValue={3.5 } precision={0.5} readOnly size="large" />
             </CardActionArea>
                 <CardActions >
                     <Button href={InvestorLogin?`/profile/${id}`:'/login'} size='small' color='secondary' >
