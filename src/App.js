@@ -17,9 +17,11 @@ import Footer from './components/Footer/Footer';
 
 
 function App() {
+  // window.localStorage.setItem("investorLogin",false);
 
-  const [InvestorLogin, setInvestorLogin] = useState(false);
-
+  
+  const [InvestorLogin, setInvestorLogin] = useState(window.localStorage.getItem("login"));
+  // console.log(InvestorLogin);
 
   const [startUp, setstartUp] = useState([]);
   const getStartUp = async () => {
@@ -33,6 +35,7 @@ function App() {
 
   useEffect(() => {
     getStartUp();
+    
   }, []);
 
   // const details={CompanyName:'Company Name',Field:'field of work', Linkedin:'linked in link', Website:'company website', Ppt:'google link',InvestorContent:'content of investor', Domain:'domain contents'}
@@ -41,7 +44,7 @@ function App() {
     <Router>
 
     <div>
-      <Navbar InvestorLogin={InvestorLogin} setInvestorLogin={setInvestorLogin}/>
+      <Navbar InvestorLogin={InvestorLogin} />
       <Grid direction='row'  container justify='center'>
         <Route exact path='/home' >
           <SimpleSlider/>
@@ -60,7 +63,7 @@ function App() {
         <Route exact path='/messages/:id' ><Message/></Route>
         <Route exact path='/register' ><Register/></Route>
         <Route exact path='/register/investor' ><RegisterInvestor/></Route>
-        <Route exact path='/login'><Login setInvestorLogin={setInvestorLogin} /></Route>
+        <Route exact path='/login'><Login investorLogin={InvestorLogin} /></Route>
         <Route exact path='/contact/:id' ><Contact/></Route>
         <Route exact path='/profile/:id' ><Profile/></Route>
         <Route exact path='/dashboard/:id' ><Dashboard details={startUp}  /></Route>

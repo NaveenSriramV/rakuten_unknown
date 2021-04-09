@@ -18,8 +18,16 @@ function RegisterInvestor() {
     const onSubmit=(e)=>{
         e.preventDefault();
         // console.log(FormDetails);
-        axios.post("http://localhost:8000/registerInvestor",FormDetails)
-            .then(window.location='/home');
+        axios.post("http://localhost:8000/investorRegister",FormDetails)
+            .then((result)=>{
+                if (result.data==='success')
+                window.location='/login'
+                else {
+                    alert('Cannot add user')
+                }
+
+            }
+            );
 
         
     }
@@ -46,9 +54,9 @@ function RegisterInvestor() {
             <form onSubmit={onSubmit}>
             <Typography className={classes.header} variant='h5' gutterBottom>Register your company Here</Typography>
                 
-                <TextField name='CompanyName' onChange={onchangec} className={classes.textField} label='Name'  color="secondary"  fullWidth required /> 
-                <TextField name='CompanyRegNumber' onChange={onchangec} className={classes.textField} label='Phone Number'  color="secondary"  fullWidth required type='tel' /> 
-                <TextField name='Password' onChange={onchangec} className={classes.textField} label='OTP'  color="secondary" type='password' fullWidth required/> 
+                <TextField name='name' onChange={onchangec} className={classes.textField} label='Name'  color="secondary"  fullWidth required /> 
+                <TextField name='phoneNo' onChange={onchangec} className={classes.textField} label='Phone Number'  color="secondary"  fullWidth required type='tel' /> 
+                <TextField name='password' onChange={onchangec} className={classes.textField} label='Password'  color="secondary" type='password' fullWidth required/> 
                 <Button  className={classes.button} color='secondary' type='submit' variant='contained'>Submit</Button>
             </form>
 

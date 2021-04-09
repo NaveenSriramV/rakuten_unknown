@@ -26,9 +26,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar({InvestorLogin, setInvestorLogin}) {
+function Navbar({InvestorLogin}) {
   const logout=()=>{
-    setInvestorLogin(false);
+    // setInvestorLogin(false);
+    window.localStorage.setItem("login",0)
     window.location='/home'
   }
   
@@ -48,13 +49,13 @@ function Navbar({InvestorLogin, setInvestorLogin}) {
             />
             </Link>
             <Typography variant="h6" className={classes.title}></Typography>
-          {InvestorLogin?<Avatar/>:
+          {InvestorLogin==1?<Avatar/>:
           <Button href='/login' className={classes.button} color="inherit">
             Login  
           </Button>
           }
             
-          {InvestorLogin?<Button onClick={logout}><PowerSettingsNew/></Button>:
+          {InvestorLogin==1?<Button onClick={logout}><PowerSettingsNew/></Button>:
             <Button href='/register' className={classes.button} color="inherit">
               Register
             </Button>}

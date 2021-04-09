@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, CardActionArea, CardActions, CardContent, Grid, Typography } from "@material-ui/core";
+import { Button, Card, CardActionArea, CardActions, CardContent, Grid, Link, Typography } from "@material-ui/core";
 import makeStyles from './CardStyle.js'
 import Rating from '@material-ui/lab/Rating';
 import { LocationOn, VerifiedUser } from '@material-ui/icons';
 
-function Cards({heading, body,id,InvestorLogin,city,messages}) {
+function Cards({heading, body,id,city,messages,InvestorLogin}) {
     console.log(messages);
     const classes = makeStyles();
 
     const [rating, setrating] = useState(messages)
 
+    console.log(window.localStorage.getItem("login"));
     useEffect(() => {
         if(messages<=1)
             setrating(1)
@@ -47,11 +48,12 @@ function Cards({heading, body,id,InvestorLogin,city,messages}) {
             </CardActionArea>
 
                 <CardActions >
-                    <Grid container justify="space-between" alignItems=''>
-
-                        <Button href={InvestorLogin?`/profile/${id}`:'/login'} size='small' color='secondary' >
+                    <Grid container justify="space-between" >
+                   
+                        <Button href={window.localStorage.getItem("login")==1?`/profile/${id}`:'/login'} size='small' color='secondary' >
                             Know More
                         </Button >
+                        
                         <Button  className={classes.location}>
                         <LocationOn />
                         {city}

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useTheme } from '@material-ui/core/styles';
 
 
-function Login({setInvestorLogin}) {
+function Login() {
   const classes = makeStyles();
   const [FormDetailsCompany, setFormDetailsCompany] = useState({});
 
@@ -44,14 +44,13 @@ function Login({setInvestorLogin}) {
   const onSubmitInvestor = (e) => {
       e.preventDefault();
       // console.log(FormDetails);
-      axios.post('http://localhost:8000/loginInvestor',FormDetailsInvestor)
+      axios.post('http://localhost:8000/investorlogin',FormDetailsInvestor)
         .then((res)=>{
-          setInvestorLogin(true)
-          // console.log(res.data)
+          console.log(res.data)
           if(res.data){
-
-
             // const id= res.data._id;
+            // setInvestorLogin(true)
+            window.localStorage.setItem('login',1)
             window.location=`/home`
           }
           else{
@@ -91,7 +90,7 @@ function Login({setInvestorLogin}) {
           />
           <Button
             className={classes.button}
-            onChange={onchangeCompany}
+            // onChange={onchangeCompany}
             color="secondary"
             type="submit"
             variant="contained"
@@ -111,7 +110,7 @@ function Login({setInvestorLogin}) {
             Login as Investor
           </Typography>
           <TextField
-            name="Phone"
+            name="phoneNo"
             onChange={onchangeInvestor}
             className={classes.textField}
             label="Phone"
@@ -121,7 +120,7 @@ function Login({setInvestorLogin}) {
             type="tel"
           />
           <TextField
-            name="Password"
+            name="password"
             onChange={onchangeInvestor}
             className={classes.textField}
             label="Password"
@@ -132,7 +131,7 @@ function Login({setInvestorLogin}) {
           />
           <Button
             className={classes.button}
-            onChange={onchangeInvestor}
+            // onChange={onchangeInvestor}
             color="secondary"
             type="submit"
             variant="contained"
