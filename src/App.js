@@ -27,6 +27,7 @@ function App() {
       var startUpRes = res.data;
       setstartUp(startUpRes);
       // console.log("st", startUpRes);
+      // console.log(startUpRes[0].messages.length);
     });
   };
 
@@ -52,6 +53,7 @@ function App() {
                 body={data.InvestorContent} 
                 country={data.Country}
                 state={data.State}
+                messages={data.messages.length}  
                 city={data.City}/>
             ))}
         </Route>

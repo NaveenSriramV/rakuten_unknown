@@ -1,11 +1,27 @@
-import React from 'react';
-import { Button, Card, CardActionArea, CardActions, CardContent, Typography } from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import { Button, Card, CardActionArea, CardActions, CardContent, Grid, Typography } from "@material-ui/core";
 import makeStyles from './CardStyle.js'
 import Rating from '@material-ui/lab/Rating';
-import { LocationCity, LocationOn, VerifiedUser } from '@material-ui/icons';
+import { LocationOn, VerifiedUser } from '@material-ui/icons';
 
-function Cards({heading, body,id,InvestorLogin,city}) {
+function Cards({heading, body,id,InvestorLogin,city,messages}) {
+    console.log(messages);
     const classes = makeStyles();
+
+    const [rating, setrating] = useState(messages)
+
+    useEffect(() => {
+        if(messages<=1)
+            setrating(1)
+        if(messages>1&&messages<3)
+            setrating(2)
+        else if(messages>3&&messages<6)
+            setrating(3)
+        else if(messages>6&&messages<9)
+            setrating(4)
+        if(messages>9)
+            setrating(3)
+    }, [])
 
     return (
         <Card className={classes.card}>
@@ -21,16 +37,26 @@ function Cards({heading, body,id,InvestorLogin,city}) {
                     </Typography>
                     
                 </CardContent>
-                    <Rating name="half-rating-read" defaultValue={3.5 } precision={0.5} readOnly size="large" />
+               
+                    {messages<=1?
+                    <Rating name="half-rating-read" defaultValue={1}  readOnly size="large" />:
+                    
+                    <Rating name="half-rating-read" defaultValue={rating}  readOnly size="large" />
+                    }
+                    
             </CardActionArea>
+
                 <CardActions >
-                    <Button href={InvestorLogin?`/profile/${id}`:'/login'} size='small' color='secondary' >
-                        Know More
-                    </Button >
-                    <Button  className={classes.location}>
-                    <LocationOn />
-                    {city}
-                    </Button>
+                    <Grid container justify="space-between" alignItems=''>
+
+                        <Button href={InvestorLogin?`/profile/${id}`:'/login'} size='small' color='secondary' >
+                            Know More
+                        </Button >
+                        <Button  className={classes.location}>
+                        <LocationOn />
+                        {city}
+                        </Button>
+                    </Grid>
 
                 </CardActions>
 

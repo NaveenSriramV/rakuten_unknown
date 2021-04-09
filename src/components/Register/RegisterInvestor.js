@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { Button, Grid, Typography,TextField } from "@material-ui/core";
 import makeStyles from './RegisterStyle'
+import firebase from '../fire';
 import axios from 'axios';
 
 
@@ -22,11 +23,26 @@ function RegisterInvestor() {
 
         
     }
+    const handleclick=async()=>{
+        let recaptcha = await new firebase.auth.RecaptchaVerifier('recaptcha');
+        let number = '+91 6382729213';
+        await firebase.auth().signInWithPhoneNumber(number,recaptcha).then((e)=>{
+            let code = prompt('enter the otp','');
+            if (code === null) console.log('error');
+            e.confirm(code).then(result=>{
+                console.log(result)
+
+            })
+        })
+        .catch(error=>{
+            console.error(error)
+        })
+    }
 
     return (
         <Grid className={classes.body} justify='center' container>
             <Grid container spacing={3} justify='center' className={classes.grid} >
-        
+            <Button onClick={handleclick}>click</Button>
             <form onSubmit={onSubmit}>
             <Typography className={classes.header} variant='h5' gutterBottom>Register your company Here</Typography>
                 
