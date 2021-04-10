@@ -73,47 +73,26 @@ router.get("/deleteAll", async (req, res) => {
 //6 3s
 //9 4s
 //9> 5s
-router.post("/message/:id", async (req, res) => {
+router.post("/message/:id", async(req, res) => {
   const id = req.params.id;
-  // var ratingObj = { rating: 0 };
-  // let messagesLength = 0;
-  // Startup.findById(id, (err, data) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     messages = data.messages;
-  //     // console.log("come", messages, messages.length);
-  //     console.log("mes", data);
-  //   }
-  // });
+  console.log(req.body.messages);
+  console.log('body',req.body);
   Startup.findByIdAndUpdate(
-    id,
-    { $push: { messages: req.body.messages } },
-    { upsert: true, new: true },
-    (error, data) => {
-      if (error) {
-        console.log(error);
-      } else {
-        messagesLength = data.messages.length;
-        res.json({
-          status: "success",
-          data,
-        });
+      id, { $push: { messages: req.body.messages } }, { upsert: true, new: true },
+      (error, data) => {
+          if (error) {
+              console.log(error);
+          } else {
+              res.json({
+                  status: "success",
+                  data,
+              });
+          }
       }
-    }
   );
-  // console.log("msg length", messagesLength);
-  // if (messagesLength > 1 && messagesLength < 3) {
-  //   ratingObj.rating = 2;
-  // } else if (messagesLength >= 3 && messagesLength < 6) {
-  //   ratingObj.rating = 3;
-  // } else if (messagesLength >= 6 && messagesLength < 9) {
-  //   ratingObj.rating = 4;
-  // } else if (messagesLength > 9) {
-  //   ratingObj.rating = 5;
-  // }
-  // console.log("rating", ratingObj);
 });
+
+ 
 
 router.delete("/delete/:id", async (req, res) => {
   let postID = req.params.id;

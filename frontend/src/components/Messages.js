@@ -22,7 +22,7 @@ function Message() {
         await axios.get(`http://localhost:8000/getStartupId/${id}`)
             .then((res)=>{
                 setCompany(res.data)
-                // console.log(res.data);
+                console.log(res.data);
             
             })
             // .catch(console.log('unable to load data'))
