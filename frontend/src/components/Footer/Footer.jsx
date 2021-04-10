@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { AppBar, Button, Toolbar,Grid } from '@material-ui/core';
-import { Facebook, GitHub, Help, LinkedIn, LocationCity, LocationOn, MailRounded, PhoneAndroidOutlined, SupervisedUserCircle } from '@material-ui/icons';
+import { Facebook, GitHub, Help, Instagram, LinkedIn, LocationCity, LocationOn, MailRounded, PhoneAndroidOutlined, SupervisedUserCircle } from '@material-ui/icons';
 import makeStyles from './FooterStyle';
 
 export default function Footer() {
@@ -32,8 +32,8 @@ export default function Footer() {
                 </Button>
                 <br/>
                 <Grid container justify="center" >
-                    <Button style={{color:'#424242'}} >
-                        <GitHub/>
+                    <Button style={{color:'pink'}} >
+                        <Instagram/>
                     </Button>
                     <Button style={{color:"#0d47a1"}}>
                         <Facebook/>
